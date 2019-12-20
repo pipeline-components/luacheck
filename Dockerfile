@@ -4,12 +4,12 @@ WORKDIR /app/
 
 # Lua
 RUN apk add --no-cache --virtual .build-deps \
-	gcc=8.3.0-r0 \
-	musl-dev=1.1.22-r3 \
-	curl=7.66.0-r0\
+	gcc=9.2.0-r3 \
+	musl-dev=1.1.24-r0 \
+	curl=7.67.0-r0 \
 	lua5.3-dev=5.3.5-r2 \
-	git=2.22.0-r0 \
-	luarocks5.3=2.4.4-r0
+	git=2.24.1-r0 \
+	luarocks5.3=2.4.4-r1
 
 RUN luarocks-5.3 install --tree /app luacheck 0.23.0-1
 
