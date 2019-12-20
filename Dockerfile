@@ -1,4 +1,4 @@
-FROM alpine:3.10 as build
+FROM alpine:3.11 as build
 
 WORKDIR /app/
 
@@ -15,7 +15,7 @@ RUN luarocks-5.3 install --tree /app luacheck 0.23.0-1
 
 FROM pipelinecomponents/base-entrypoint:0.2.0 as entrypoint
 
-FROM alpine:3.10
+FROM alpine:3.11
 COPY --from=entrypoint /entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ENV DEFAULTCMD luacheck
