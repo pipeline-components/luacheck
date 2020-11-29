@@ -3,13 +3,14 @@ FROM alpine:3.11 as build
 WORKDIR /app/
 
 # Lua
+# hadolint ignore=DL3018
 RUN apk add --no-cache --virtual .build-deps \
-	gcc=9.2.0-r3 \
-	musl-dev=1.1.24-r0 \
-	curl=7.67.0-r0 \
-	lua5.3-dev=5.3.5-r2 \
-	git=2.24.1-r0 \
-	luarocks5.3=2.4.4-r1
+	gcc \
+	musl-dev \
+	curl \
+	lua5.3-dev \
+	git \
+	luarocks5.3
 
 RUN luarocks-5.3 install --tree /app luacheck 0.23.0-1
 
@@ -41,12 +42,12 @@ ARG BUILD_REF
 # Labels
 LABEL \
     maintainer="Robbert Müller <spam.me@grols.ch>" \
-    org.label-schema.description="_Template_ in a container for gitlab-ci" \
+    org.label-schema.description="Luacheck in a container for gitlab-ci" \
     org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.name="_Template_" \
+    org.label-schema.name="Luacheck" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.url="https://pipeline-components.gitlab.io/" \
-    org.label-schema.usage="https://gitlab.com/pipeline-components/_template_/blob/master/README.md" \
+    org.label-schema.usage="https://gitlab.com/pipeline-components/luacheck/blob/master/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://gitlab.com/pipeline-components/_template_/" \
+    org.label-schema.vcs-url="https://gitlab.com/pipeline-components/luacheck/" \
     org.label-schema.vendor="Pipeline Components"
