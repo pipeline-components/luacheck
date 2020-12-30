@@ -14,7 +14,7 @@ RUN apk add --no-cache --virtual .build-deps \
 
 RUN luarocks-5.3 install --tree /app luacheck 0.23.0-1
 
-FROM pipelinecomponents/base-entrypoint:0.2.0 as entrypoint
+FROM pipelinecomponents/base-entrypoint:0.3.0 as entrypoint
 
 FROM alpine:3.12
 COPY --from=entrypoint /entrypoint.sh /entrypoint.sh
