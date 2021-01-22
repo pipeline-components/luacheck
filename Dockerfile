@@ -8,7 +8,7 @@ RUN apk add --no-cache --virtual .build-deps \
 	gcc \
 	musl-dev \
 	curl \
-	lua5.3-dev=5.3.5-r6 \
+	lua5.3-dev=5.3.6-r0 \
 	git \
 	luarocks5.3
 
@@ -22,7 +22,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 ENV DEFAULTCMD luacheck
 
 
-RUN apk add --no-cache lua5.3=5.3.5-r6
+RUN apk add --no-cache lua5.3=5.3.6-r0
 
 COPY --from=build /app/ /app/
 
