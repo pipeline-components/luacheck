@@ -1,4 +1,4 @@
-FROM alpine:3.12 as build
+FROM alpine:3.13 as build
 
 WORKDIR /app/
 
@@ -8,7 +8,7 @@ RUN apk add --no-cache --virtual .build-deps \
 	gcc \
 	musl-dev \
 	curl \
-	lua5.3-dev=5.3.5-r6 \
+	lua5.3-dev=5.3.6-r0 \
 	git \
 	luarocks5.3
 
@@ -16,13 +16,13 @@ RUN luarocks-5.3 install --tree /app luacheck 0.23.0-1
 
 FROM pipelinecomponents/base-entrypoint:0.3.0 as entrypoint
 
-FROM alpine:3.12
+FROM alpine:3.13
 COPY --from=entrypoint /entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ENV DEFAULTCMD luacheck
 
 
-RUN apk add --no-cache lua5.3=5.3.5-r6
+RUN apk add --no-cache lua5.3=5.3.6-r0
 
 COPY --from=build /app/ /app/
 
