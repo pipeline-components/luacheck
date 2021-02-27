@@ -22,7 +22,7 @@ For more information on luacheck checkout there [website][luacheck]
 ```yaml
 luacheck:
   stage: linting
-  image: pipelinecomponents/luacheck:latest
+  image: registry.gitlab.com/pipeline-components/luacheck:latest
   script:
     - luacheck .
 ```
