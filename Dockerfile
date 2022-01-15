@@ -10,9 +10,8 @@ RUN apk add --no-cache --virtual .build-deps \
 	curl \
 	lua5.3-dev=5.3.6-r0 \
 	git \
-	luarocks5.3
-
-RUN luarocks-5.3 install --tree /app luacheck 0.23.0-1
+	luarocks5.3 && \
+    luarocks-5.3 install --tree /app luacheck 0.23.0-1
 
 FROM pipelinecomponents/base-entrypoint:0.5.0 as entrypoint
 
