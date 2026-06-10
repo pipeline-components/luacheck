@@ -1,4 +1,4 @@
-FROM alpine:3.23.4 as build
+FROM alpine:3.24.0 as build
 
 WORKDIR /app/
 
@@ -15,7 +15,7 @@ RUN apk add --no-cache --virtual .build-deps \
 
 FROM pipelinecomponents/base-entrypoint:0.5.0 as entrypoint
 
-FROM alpine:3.23
+FROM alpine:3.24
 COPY --from=entrypoint /entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ENV DEFAULTCMD luacheck
